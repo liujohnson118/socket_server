@@ -5,13 +5,10 @@ defmodule SocketServerWeb.Endpoint do
   socket "/socket", SocketServerWeb.UserSocket,
    websocket: true,
    longpoll: false
+
   if code_reloading? do
     plug Phoenix.CodeReloader
   end
-
-  plug Phoenix.LiveDashboard.RequestLogger,
-    param_key: "request_logger",
-    cookie_key: "request_logger"
 
   plug Plug.RequestId
   plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
@@ -23,5 +20,6 @@ defmodule SocketServerWeb.Endpoint do
 
   plug Plug.MethodOverride
   plug Plug.Head
+  
   plug SocketServerWeb.Router
 end
